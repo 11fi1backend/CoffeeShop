@@ -1,11 +1,49 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: f.bauer
- * Date: 15.06.2015
- * Time: 14:23
- */
 
-class DatabaseQuery {
+abstract class DatabaseQuery
+{
+    /**
+     * @param $input
+     * @return string
+     * @throws InvalidArgumentException
+     */
+    public static function escapeString($input)
+    {
+        if (!is_string($input))
+        {
+            throw new InvalidArgumentException("Given parameter has to be a string");
+        }
 
+        return mysql_escape_string($input);
+    }
+
+    /**
+     * @param $input
+     * @return int
+     * @throws InvalidArgumentException
+     */
+    public static function escapeInt($input)
+    {
+        if (!is_int($input))
+        {
+            throw new InvalidArgumentException("Given parameter has to be an integer");
+        }
+
+        return $input;
+    }
+
+    /**
+     * @param $input
+     * @return float
+     * @throws InvalidArgumentException
+     */
+    public static function escapeFloat($input)
+    {
+        if (!is_float($input))
+        {
+            throw new InvalidArgumentException("Given parameter has to be an float");
+        }
+
+        return $input;
+    }
 }
