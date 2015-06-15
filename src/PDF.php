@@ -1,9 +1,10 @@
 <?php
 
+/**
+ * Dummy Class
+ */
 class PDF
 {
-    // Class Dummy
-
     public function __construct()
     {
     }

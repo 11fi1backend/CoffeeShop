@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Class Mail - ValueObject
- */
 class Mail
 {
     /**
