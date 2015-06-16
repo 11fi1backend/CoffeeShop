@@ -47,12 +47,4 @@ class DataBaseConnection
             return false;
         }
     }
-
-    /**
-     * @return resource
-     */
-    public function getConnection()
-    {
-        return $this->connection;
-    }
 }

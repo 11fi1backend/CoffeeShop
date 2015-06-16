@@ -1,13 +1,23 @@
 <?php
 
-use lib as library;
-
 class Factory
 {
-    // TODO: initialize MailTransmitter and interaction with application
+    /**
+     * @var \lib\DataBaseConnection
+     */
+    private $databaseConnection;
 
-    public function __construct()
+    /**
+     * @return \lib\DataBaseConnection
+     */
+    public function getDataBase()
     {
-        $test = new library\Mail("", "", "", "", new PDF());
+        if ($this->databaseConnection == null) {
+
+            // TODO: add real loginDatas
+            $this->databaseConnection = new \lib\DataBaseConnection("HOST", "DBNAME", "USERNAME", "STRING");
+        }
+
+        return $this->databaseConnection;
     }
 }
