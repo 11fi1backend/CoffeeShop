@@ -1,5 +1,7 @@
 <?php
 
+namespace lib;
+
 abstract class DatabaseQuery
 {
     /**

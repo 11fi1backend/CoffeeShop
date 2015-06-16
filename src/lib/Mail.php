@@ -1,5 +1,7 @@
 <?php
 
+namespace lib;
+
 class Mail
 {
     /**
@@ -32,9 +34,9 @@ class Mail
      * @param $destinationMail
      * @param string $subject
      * @param string $message
-     * @param PDF $pdfFile
+     * @param \PDF $pdfFile
      */
-    public function __construct($senderMail, $destinationMail, $subject, $message, PDF $pdfFile)
+    public function __construct($senderMail, $destinationMail, $subject, $message, \PDF $pdfFile)
     {
         $this->ensureEmailsAreValid($senderMail, $destinationMail);
         $this->ensureMailTextIsValid($subject, $message);
@@ -49,34 +51,36 @@ class Mail
     /**
      * @param $senderMail
      * @param $destinationMail
+     * @throws \InvalidArgumentException
      */
     private function ensureEmailsAreValid($senderMail, $destinationMail)
     {
         if (filter_var($senderMail, FILTER_VALIDATE_EMAIL))
         {
-            throw new InvalidArgumentException("Given senderMail is not a valid email");
+            throw new \InvalidArgumentException("Given senderMail is not a valid email");
         }
 
         if (filter_var($destinationMail, FILTER_VALIDATE_EMAIL))
         {
-            throw new InvalidArgumentException("Given destinationMail is not a valid email");
+            throw new \InvalidArgumentException("Given destinationMail is not a valid email");
         }
     }
 
     /**
      * @param $subject
      * @param $message
+     * @throws \InvalidArgumentException
      */
     private function ensureMailTextIsValid($subject, $message)
     {
         if (!is_string($subject))
         {
-            throw new InvalidArgumentException("Given subject has to be a string");
+            throw new \InvalidArgumentException("Given subject has to be a string");
         }
 
         if (!is_string($message))
         {
-            throw new InvalidArgumentException("Given message has to be a string");
+            throw new \InvalidArgumentException("Given message has to be a string");
         }
     }
 
@@ -97,7 +101,7 @@ class Mail
     }
 
     /**
-     * @return PDF
+     * @return \PDF
      */
     public function getPdfFile()
     {

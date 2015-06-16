@@ -1,6 +1,2 @@
 <?php
 
-use database;
-
-// TODO
-
