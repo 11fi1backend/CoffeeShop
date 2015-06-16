@@ -1,27 +1,22 @@
 <?php
 
-include('../fpdf17/fpdf.php');
-
-$pdf = new FPDF("P", "mm", "A4");
-$pdf->AddPage();
-$pdf->SetFont('Arial','B',16);
-$pdf->Cell(40,10,'Hallo Welt!');
-$pdf->Output();
-
-
+#include('../fpdf17/fpdf.php');
 
 /**
- * Dummy Class
+ * 
  */
-/*class PDF
+class PDF
 {
     public function __construct()
     {
+    	$prince = new Prince('../Prince/Engine/bin/prince.exe');
     	
 		
+		
     }
+    
 }
 
 
-*/
+
 ?>
