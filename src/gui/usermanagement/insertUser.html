@@ -3,24 +3,36 @@
     <head lang="de">
         <meta charset="UTF-8">
         <title>Add new User</title>
+        <link rel="stylesheet" href="css/insertUser.css">
     </head>
 
     <body>
         <!-- TODO: add interaction with PHP Script; add radiobutton for freeuser-option -->
         <form action="../File/" method="post" autocomplete="off">
-
             <label for="vorname">Vorname</label>
-            <input id="vorname" name="vorname" maxlength="80">
-            
+            <br>
+            <input id="vorname" name="vorname" class="txtBox" maxlength="80">
+
+            <br>
+
             <label for="name">Name</label>
-            <input id="name" name="name" maxlength="80">
+            <br>
+            <input id="name" name="name" class="txtBox" maxlength="80">
 
-            <fieldset>
-                <input type="radio" id="mc" name="freeuser" value="true"><label for="mc"> Yes</label><br> 
-                <input type="radio" id="vi" name="freeuser" value="false"><label for="vi">  No</label><br> 
-            </fieldset>
+            <br>
+            <br>
 
-            <button type="submit" name="action" value="0">add</button>
+            <label for="name">Kopiercode</label>
+            <br>
+            <input id="copyCode" name="copyCode" class="txtBox" maxlength="20">
+
+            <br>
+            <br>
+
+            <input type="radio" id="tr" name="freeuser" value="true"><label for="tr"> Yes</label>
+            <input type="radio" id="fl" name="freeuser" value="false"><label for="fl">  No</label>
+
+            <button type="submit" name="action" value="0">hinzufügen</button>
         </form>
     </body>
 </html>
