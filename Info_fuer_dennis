@@ -1,0 +1,13 @@
+# CoffeeShop
+Muss noch eingebaut werden. Dennis
+
+
+/***** pdf.php *****/ <br>
+class Prince{ <br>
+public function __construct() { <br>
+$prince = new Prince("../prince/prince.php"); <br>
+$prince -> convert_file_to_file("../src/Rechnung.xml", "../src/Rechnung.pdf");  <br>
+<br>
+
+/***** index.php *****/ <br>
+$test=new Prince(); <br>
