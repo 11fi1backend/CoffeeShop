@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form icon="Invoice.icon" title="@Invoice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../../../../ch.minova.install/src/ch/minova/install/xsd/XMLForm.xsd">
+	<index-view source="dbo.createInvoice" id="IndexView">
+		<column name="ID" key="true" size="0" text="ID">
+			<number/>
+		</column>
+		<column name="Konsumenten_ID" text="Konsument">
+			<text length="50"/>
+		</column>
+		<column name="Rechnungsbetrag" text="Rechnungsbetrag">
+			<number/>
+		</column>
+		<column name="Offen" text="Offen">
+			<boolean/>
+		</column>
+		<column name="Datum" text="Datum">
+			<short-date/>
+		</column>
+	</index-view>
+	<detail button-block-visible="false" id="Detail" procedure-suffix="Inovice">
+		<head>
+			<field key-type="primary" name="ID" sql-index="0" visible="true">
+				<number/>
+			</field>
+		</head>
+		<page text="Rechnung" icon="Inovice.icon">
+			<field name="Konsumenten_ID" required="true" number-columns-spanned="4" sql-index="1" text="Konsumenten_ID">
+				<lookup table="Konsumenten"/>
+			</field>
+			<field name="Rechnungsbetrag" read-only="true" number-columns-spanned="4" sql-index="2" text="Rechnungsbetrag">
+				<number/>
+			</field>
+			<field name="Offen" sql-index="3" number-columns-spanned="4" text="Offen">
+				<boolean/>
+			</field>
+			<field name="Datum" sql-index="4" number-columns-spanned="4" text="Rechnungsdatum">
+				<short-date/>
+			</field>
+		</page>
+	</detail>
+</form>
