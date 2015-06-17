@@ -1,5 +1,5 @@
 <?php
-require_once 'PDF.php';
 
+require_once('lib/AutoLoader.php');
 
-?>
+$test = new PDF();
