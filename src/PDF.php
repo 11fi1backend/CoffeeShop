@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 #include('../fpdf17/fpdf.php');
 include('../prince/prince.php'); 
 
@@ -27,3 +28,17 @@ $prince -> convert_file_to_file("../src/Rechnung.xml", "Rechnung.pdf");
 
 */
 ?>
+=======
+class PDF
+{
+    public function __construct()
+    {
+    	#$prince = new Prince('../prince/prince.php');
+    	#$prince -> convert_file_to_file("../src/Rechnung.xml", "../src/Rechnung.pdf");
+
+        $test = new Prince('../prince/prince.php');
+
+    }
+    
+}
+>>>>>>> origin/master
