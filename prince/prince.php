@@ -34,9 +34,9 @@ class Prince
     private $encrypt;
     private $encryptInfo;
 
-    public function __construct($exePath)
+    public function __construct($exePath, $easy = false)
     {
-	$this->exePath = $this->addDoubleQuotes(ltrim($exePath));
+	$this->exePath = $this->addDoubleQuotes(ltrim($exePath), $easy);
 	$this->styleSheets = '';
 	$this->scripts = '';
 	$this->fileAttachments = '';
@@ -577,7 +577,9 @@ class Prince
 				1 => array("pipe", "w"),
 				2 => array("pipe", "w")
 				);
-	
+// 	echo $pathAndArgs;
+// 	echo system($pathAndArgs) ;
+// 	die ();
 	$process = proc_open($pathAndArgs, $descriptorspec, $pipes, NULL, NULL, array('bypass_shell' => TRUE));
 	
 	if (is_resource($process))
@@ -728,8 +730,15 @@ class Prince
     	//Puts double-quotes around space(s) in file path,
     	//and also around semicolon(;), comma(,), ampersand(&), up-arrow(^) and parentheses.
 	//This is needed if the file path is used in a command line.
-	private function addDoubleQuotes($str)
+	private function addDoubleQuotes($str, $easy = false)
 	{
+		
+		if ($easy) {
+			return  '"'.$str.'"';
+			// linux:
+// 			return escapeshellcmd($str);
+		}
+		
 		$len = strlen($str);
 		
 		$outputStr = '';
