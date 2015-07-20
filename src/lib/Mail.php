@@ -38,7 +38,8 @@ class Mail
      */
     public function __construct($senderMail, $destinationMail, $subject, $message, \PDF $pdfFile)
     {
-        $this->ensureEmailsAreValid($senderMail, $destinationMail);
+        $this->ensureEmailIsValid($senderMail);
+        $this->ensureEmailIsValid($destinationMail);
         $this->ensureMailTextIsValid($subject, $message);
 
         $this->senderMail = $senderMail;
@@ -49,20 +50,13 @@ class Mail
     }
 
     /**
-     * @param $senderMail
-     * @param $destinationMail
-     * @throws \InvalidArgumentException
+     * @param $mail
      */
-    private function ensureEmailsAreValid($senderMail, $destinationMail)
+    private function ensureEmailIsValid($mail)
     {
-        if (filter_var($senderMail, FILTER_VALIDATE_EMAIL))
+        if (filter_var($mail, FILTER_VALIDATE_EMAIL))
         {
-            throw new \InvalidArgumentException("Given senderMail is not a valid email");
-        }
-
-        if (filter_var($destinationMail, FILTER_VALIDATE_EMAIL))
-        {
-            throw new \InvalidArgumentException("Given destinationMail is not a valid email");
+            throw new \InvalidArgumentException(sprintf("Given mail is not a valid email (%s)", $mail));
         }
     }
 

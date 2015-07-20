@@ -16,7 +16,7 @@ abstract class DatabaseQuery
             throw new \InvalidArgumentException("Given parameter has to be a string");
         }
 
-        return mysql_escape_string($input);
+        return addcslashes('\\', $input);
     }
 
     /**
