@@ -1,47 +1,16 @@
 <?php
 
-<<<<<<< HEAD
-$FOPIN="";
-$PDFOUT="";
-
-echo "java -jar /home/it/fop-2.0/build/fop-2.0 -fo $FOPIN -pdf $PDFOUT";
 
 
+echo exec('whoami');
 
-=======
-#include('../fpdf17/fpdf.php');
-#include('../prince/prince.php');
+#echo exec('FOP=/home/it/fop-2.0');
+#exec('PDFOUT=$FOP/rechnungen');
 
-#$princepath muss noch angepasst werden! 
+#exec('echo $FOP');
+
+#exec('java -jar $FOP/build/fop.jar -fo $FOP/examples/fo/basic/images.fo -pdf $FOP/images.pdf');
 
 
 
-
-
-echo "Nicht im Konstruktor"."<br>";
-
-
-/**
- * 
- */
-class PDF
-{
-
-    public function __construct()
-    {
-    	echo "Ich bin im Konstruktor"."<br>";
-    	$princepath="D:\Program Files\Prince\Engine\bin\prince.exe";
-    	
-    	
-    	$newPDF = new Prince($princepath, true);
-    	$newPDF -> convert_file_to_file("..\prince\lieferschein.xml", "..\prince\lieferschein.pdf");
-    	
-    	echo "PDF erzeugt"."<br>";
-    }
-    
-}
-
-
-
-
->>>>>>> origin/master
+?>
