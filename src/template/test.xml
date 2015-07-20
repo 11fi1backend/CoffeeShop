@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Kaufmannsladen>
+    <Waren>
+        <Suesswaren>
+            <Lolli preis="5,00" />
+            <Zuckerstange preis="2,00" />
+        </Suesswaren>
+    </Waren>
+    <Personal>
+        <Mitarbeiter id ="2">
+            <Name>Dobermann</Name>
+            <Anschrift>Beispielweg</Anschrift>
+            <Telefon>515248</Telefon>
+        </Mitarbeiter>
+        <Mitarbeiter id="3">
+            <Name>Meier</Name>
+            <Anschrift>Knutallee</Anschrift>
+            <Telefon>22222</Telefon>
+        </Mitarbeiter>
+    </Personal>
+</Kaufmannsladen>

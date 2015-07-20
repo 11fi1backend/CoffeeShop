@@ -39,9 +39,11 @@ class TemplateEngine
                 $elements = $doc->getElementsByTagName($parameter);
 
                 for ($var = 0; $var <= $elements->length; $var++) {
-                    $elements->item($var)->nodeValue($value);
+                    $elements->item($var)->nodeValue = $value;
                 }
             }
+
+            $doc->saveXML();
         } catch (\RuntimeException $e) {
             MailTransmitter::sendEmail(
                 new Mail(
