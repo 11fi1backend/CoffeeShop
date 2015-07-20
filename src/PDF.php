@@ -1,44 +1,9 @@
 <?php
 
-<<<<<<< HEAD
-#include('../fpdf17/fpdf.php');
-include('../prince/prince.php'); 
+$FOPIN="";
+$PDFOUT="";
 
-$prince = new Prince("C:/Program Files (x86)/Prince/Engine/bin/prince");
-$prince -> convert_file_to_file("../src/Rechnung.xml", "Rechnung.pdf");
+echo "java -jar /home/it/fop-2.0/build/fop-2.0 -fo $FOPIN -pdf $PDFOUT";
 
 
-#"../src/Rechnung.xml"
 
-/**
- * 
- */
-/*class PDF
-{
-    public function __construct()
-    {
-    	$prince = new Prince("../../Program Files (x86)/Prince/Engine/bin/prince.exe");
-    	$prince -> convert_file("../src/Rechnung.xml");
-    	
-		
-    }
-    
-}
-
-
-*/
-?>
-=======
-class PDF
-{
-    public function __construct()
-    {
-    	#$prince = new Prince('../prince/prince.php');
-    	#$prince -> convert_file_to_file("../src/Rechnung.xml", "../src/Rechnung.pdf");
-
-        $test = new Prince('../prince/prince.php');
-
-    }
-    
-}
->>>>>>> origin/master
