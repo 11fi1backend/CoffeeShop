@@ -2,11 +2,19 @@
 
 require_once('lib/AutoLoader.php');
 
-$te = new \lib\TemplateEngine('template/test.xml', 'template/CoffeeShop/templateOutput.xml');
+$te = new \lib\TemplateEngine('/etc/coffeeshop/invoice/invoice.report.fo', '/etc/coffeeshop/invoice/fo/invoice.report.fo');
 
-echo shell_exec('java -jar /etc/coffeeshop/fop-2.0/build/fop.jar -fo /etc/coffeeshop/fop-2.0/examples/fo/basic/images.fo -pdf /etc/coffeeshop/fop-2.0/images.pdf');
-
-$te->render(array('%NAME%' => 'fooBar'));
-
-
+$te->render(
+	array(
+		'%Lehrername%' 		=> 'LEHRER',
+		'%Konsumenten_ID' 	=> 'KDNR', 
+		'%Rechnungs_ID%' 	=> 'RECHNR', 
+		'%Auftrags_ID%' 	=> 'AUFNR',
+		'%Auftragsdatum%' 	=> 'AUFDAT',
+		'%Artikelnr%' 		=> 'ARTNR',
+		'%Bezeichnung%' 	=> 'BEZEICHNUNG',
+		'%Menge%' 			=> 'MENGE',
+		'%Rechnungspreis%' 	=> 'RECHPREIS'
+	)
+);
 

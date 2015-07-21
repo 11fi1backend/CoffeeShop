@@ -52,6 +52,9 @@ class TemplateEngine
             file_put_contents($this->templateOutputPath, $templateFileContent);
 
             // TODO: add ShellCommands for FOB Call
+			$INVOICE_NR="%RECHNUNGS_ID%";
+            
+            echo shell_exec('java -jar /etc/coffeeshop/fop-2.0/build/fop.jar -fo escapeshellarg($this->templateOutputPath) -pdf /etc/coffeeshop/invoice/pdf/Rechnung_'.escapeshellarg($INVOICE_NR).".pdf");
 
         } catch (\RuntimeException $e) {
             MailTransmitter::sendEmail(
