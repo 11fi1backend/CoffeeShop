@@ -36,7 +36,7 @@ class Mail
      * @param string $message
      * @param \PDF $pdfFile
      */
-    public function __construct($senderMail, $destinationMail, $subject, $message, \PDF $pdfFile)
+    public function __construct($senderMail, $destinationMail, $subject, $message, \PDF $pdfFile = null)
     {
         $this->ensureEmailIsValid($senderMail);
         $this->ensureEmailIsValid($destinationMail);

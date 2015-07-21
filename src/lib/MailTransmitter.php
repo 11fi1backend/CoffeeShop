@@ -8,7 +8,7 @@ abstract class MailTransmitter
      * @param Mail $mail
      * @return bool
      */
-    public function sendEmail(Mail $mail)
+    public static function sendEmail(Mail $mail)
     {
         $header = sprintf(
             'From: %s' . "\r\n" .

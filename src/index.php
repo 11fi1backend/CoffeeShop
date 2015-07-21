@@ -1,12 +1,10 @@
 <?php
 
-#<<<<<<< HEAD
-#=======
-#>>>>>>> origin/master
+require_once('lib/AutoLoader.php');
 
-require_once('/lib/AutoLoader.php');
+$te = new \lib\TemplateEngine('template/test.xml', 'template/CoffeeShop/templateOutput.xml');
 
-echo "erzeuge neue PDF"."<br>"; 
+$te->render(array('%NAME%' => 'fooBar'));
 
 
-$test = new PDF();
+

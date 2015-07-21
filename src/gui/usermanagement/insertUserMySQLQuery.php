@@ -10,28 +10,28 @@ class insertUserMySQLQuery extends \lib\DatabaseQuery
     /**
      * @var string
      */
-    private $lastName;
+    private $copyCode;
 
     /**
      * @var string
      */
-    private $copyCode;
+    private $locked;
 
-    public function __construct($name, $lastName, $copyCode)
+    public function __construct($name, $copyCode, $locked)
     {
         $this->name = $name;
-        $this->lastName = $lastName;
-        $this->copyCode = $copyCode;
+        $this->lastName = $copyCode;
+        $this->copyCode = $locked;
     }
 
     public function __toString()
     {
         // TODO: complete SQL
         return sprintf(
-            'INSERT INTO users VALUES (%s, %s, %s)',
+            'INSERT INTO customer VALUES (%s, %s, %s)',
             $this->escapeString($this->name),
-            $this->escapeString($this->lastName),
-            $this->escapeString($this->copyCode)
+            $this->escapeString($this->copyCode),
+            $this->escapeString($this->locked)
         );
     }
 }
