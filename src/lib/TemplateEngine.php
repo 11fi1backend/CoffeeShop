@@ -10,13 +10,21 @@ class TemplateEngine
     private $filePath;
 
     /**
-     * @param $filePath
+     * @var string
      */
-    public function __construct($filePath)
-    {
-        self::ensureFileExists($filePath);
+    private $templateOutputPath;
 
-        $this->filePath = $filePath;
+    /**
+     * @param $templatePath
+     * @param $templateOutputPath
+     */
+    public function __construct($templatePath, $templateOutputPath)
+    {
+        self::ensureFileExists($templatePath);
+        self::ensureFileExists($templateOutputPath);
+
+        $this->filePath = $templatePath;
+        $this->templateOutputPath = $templateOutputPath;
     }
 
     /**
@@ -31,19 +39,20 @@ class TemplateEngine
 
     public function render(array $parameters)
     {
-        $doc = new \DOMDocument();
-        $doc->load($this->filePath);
+        // read template file from path
+        $templateFileContent = file_get_contents($this->filePath);
 
         try {
             foreach($parameters as $parameter => $value) {
-                $elements = $doc->getElementsByTagName($parameter);
-
-                for ($var = 0; $var <= $elements->length; $var++) {
-                    $elements->item($var)->nodeValue = $value;
-                }
+                // replace given parameter with given value
+                $templateFileContent = str_replace("$parameter", "$value", $templateFileContent);
             }
 
-            $doc->saveXML();
+            // write into new file for PDF Output
+            file_put_contents($this->templateOutputPath, $templateFileContent);
+
+            // TODO: add ShellCommands for FOB Call
+
         } catch (\RuntimeException $e) {
             MailTransmitter::sendEmail(
                 new Mail(
@@ -51,7 +60,7 @@ class TemplateEngine
                     'admin@klara-oppenheimer-schule.de',
                     'Coffeeshop - Error in Backend',
                     sprintf(
-                        'Could not create PDF File with template (%s). Please check Exception: %s',
+                        'Could not create template (%s). \n Please check Exception: %s',
                         $this->filePath,
                         $e
                     )

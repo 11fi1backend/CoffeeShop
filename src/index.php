@@ -2,11 +2,9 @@
 
 require_once('lib/AutoLoader.php');
 
+$te = new \lib\TemplateEngine('template/test.xml', 'template/CoffeeShop/templateOutput.xml');
 
-
-$te = new \lib\TemplateEngine('template/test.xml');
-
-$te->render(['anschriftBox' => 'test']);
+$te->render(array('%NAME%' => 'fooBar'));
 
 
 
