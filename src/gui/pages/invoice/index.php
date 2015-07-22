@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>CoffeeShop Backend - Lieferscheine generieren und absenden</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+<?php 
 
-    <body>
-        <h1>Hello, world!</h1>
+require_once('../../../lib/AutoLoader.php');
 
-    </body>
-</html>
+$MYSQLDB = new DataBaseConnection('10.161.10.36', 'coffeeshop', 'root', '');
+
+
+
+$te = new TemplateEngine('/etc/coffeeshop/invoice/invoice.report.fo', '/etc/coffeeshop/invoice/fo/invoice.report.fo');
+$te->render(
+	array( 
+		'%Lehrername%' 		=> 'LEHRER',
+		'%Konsumenten_ID' 	=> 'KDNR', 
+		'%Rechnungs_ID%' 	=> 'RECHNR', 
+		'%Auftrags_ID%' 	=> 'AUFNR',
+		'%Auftragsdatum%' 	=> 'AUFDAT',
+		'%Artikelnr%' 		=> 'ARTNR',
+		'%Bezeichnung%' 	=> 'BEZEICHNUNG',
+		'%Menge%' 			=> 'MENGE',
+		'%Rechnungspreis%' 	=> 'RECHPREIS'
+	)
+);
+
+print_r($MYSQLDB);

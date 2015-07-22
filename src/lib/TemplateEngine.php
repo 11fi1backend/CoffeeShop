@@ -51,7 +51,7 @@ class TemplateEngine
             // write into new file for PDF Output
             file_put_contents($this->templateOutputPath, $templateFileContent);
 
-            // TODO: add ShellCommands for FOB Call
+            // Shell Command for generating the invoice with FOP 
 			$INVOICE_NR="%RECHNUNGS_ID%";
             
             echo shell_exec('java -jar /etc/coffeeshop/fop-2.0/build/fop.jar -fo escapeshellarg($this->templateOutputPath) -pdf /etc/coffeeshop/invoice/pdf/Rechnung_'.escapeshellarg($INVOICE_NR).".pdf");

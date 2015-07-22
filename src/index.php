@@ -1,6 +1,6 @@
 <?php
 
-require_once('lib/AutoLoader.php');
+require_once('../../lib/AutoLoader.php');
 
 $te = new \lib\TemplateEngine('/etc/coffeeshop/invoice/invoice.report.fo', '/etc/coffeeshop/invoice/fo/invoice.report.fo');
 
