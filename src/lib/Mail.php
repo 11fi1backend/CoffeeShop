@@ -25,39 +25,19 @@ class Mail
     private $message;
 
     /**
-     * @var PDF
-     */
-    private $pdfFile;
-
-    /**
      * @param $senderMail
      * @param $destinationMail
      * @param string $subject
      * @param string $message
-     * @param \PDF $pdfFile
      */
-    public function __construct($senderMail, $destinationMail, $subject, $message, \PDF $pdfFile = null)
+    public function __construct(EmailAddress $senderMail, EmailAddress $destinationMail, $subject, $message)
     {
-        $this->ensureEmailIsValid($senderMail);
-        $this->ensureEmailIsValid($destinationMail);
         $this->ensureMailTextIsValid($subject, $message);
 
         $this->senderMail = $senderMail;
         $this->destinationMail = $destinationMail;
-        $this->pdfFile = $pdfFile;
         $this->subject = $subject;
         $this->message = $message;
-    }
-
-    /**
-     * @param $mail
-     */
-    private function ensureEmailIsValid($mail)
-    {
-        if (filter_var($mail, FILTER_VALIDATE_EMAIL))
-        {
-            throw new \InvalidArgumentException(sprintf("Given mail is not a valid email (%s)", $mail));
-        }
     }
 
     /**
@@ -92,14 +72,6 @@ class Mail
     public function getDestinationMail()
     {
         return $this->destinationMail;
-    }
-
-    /**
-     * @return \PDF
-     */
-    public function getPdfFile()
-    {
-        return $this->pdfFile;
     }
 
     /**
