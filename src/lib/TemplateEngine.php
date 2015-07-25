@@ -54,7 +54,7 @@ class TemplateEngine
             // Shell Command for generating the invoice with FOP 
 			$INVOICE_NR="%RECHNUNGS_ID%";
             
-            echo shell_exec('java -jar /etc/coffeeshop/fop-2.0/build/fop.jar -fo escapeshellarg($this->templateOutputPath) -pdf /etc/coffeeshop/invoice/pdf/Rechnung_'.escapeshellarg($INVOICE_NR).".pdf");
+            echo shell_exec('java -jar ../../fop-2.0/build/fop.jar -fo escapeshellarg($this->templateOutputPath) -pdf ../../fop-2.0/invoice_pdf/Rechnung_'.escapeshellarg($INVOICE_NR).".pdf");
 
         } catch (\RuntimeException $e) {
             MailTransmitter::sendEmail(
