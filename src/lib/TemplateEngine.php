@@ -5,7 +5,7 @@ class TemplateEngine
     /**
      * @var string
      */
-    private $filePath;
+    private $templatePath;
 
     /**
      * @var string
@@ -20,7 +20,7 @@ class TemplateEngine
     {
         self::ensureFileExists($templatePath);
 
-        $this->filePath = $templatePath;
+        $this->templatePath = $templatePath;
         $this->templateOutputPath = $templateOutputPath;
     }
 
@@ -38,7 +38,7 @@ class TemplateEngine
     public function render(array $parameters)
     {
         // read template file from path
-        $templateFileContent = file_get_contents($this->filePath);
+        $templateFileContent = file_get_contents($this->templatePath);
 
         try {
             foreach($parameters as $parameter => $value) {
@@ -79,7 +79,7 @@ class TemplateEngine
                     'Coffeeshop - Error in Backend',
                     sprintf(
                         'Could not create template (%s). \n Please check Exception: %s',
-                        $this->filePath,
+                        $this->templatePath,
                         $e
                     )
                 )
