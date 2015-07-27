@@ -31,6 +31,7 @@ class TemplateEngine
     {
         if (!file_exists($filePath)) {
             throw new \InvalidArgumentException(sprintf('Given file could not be found. Pls check the given path (%s)', $filePath));
+            #'
         }
     }
     
@@ -53,22 +54,22 @@ class TemplateEngine
 			
 			self::ensureFileExists($this->templateOutputPath);
 			
-			#../../../../fop-2.0/invoice_fo/invoice.report.fo
-            
 			$this->templateOutputPath = substr($this->templateOutputPath, 6);
 			
-			echo $this->templateOutputPath;
+			#echo $this->templateOutputPath.'<br>'; 
+
+			#C:\xampp\htdocs\CoffeeShop\fop-2.0
+			echo `java -jar 'C:/xampp/htdocs/CoffeeShop/fop-2.0/build/fop.jar -fo C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_fo/invoice.report.fo -pdf C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_pdf/Rechnung_s.pdf' 2>&1`;
 			
 			// Shell Command for generating the invoice with FOP 
 			echo shell_exec(
             	sprintf(
-            		'java -jar ../../fop-2.0/build/fop.jar -fo %s -pdf ../../fop-2.0/invoice_pdf/Rechnung_%s.pdf',
-            		$this->templateOutputPath,
+            		'java -jar C:/xampp/htdocs/CoffeeShop/fop-2.0/build/fop.jar -fo C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_fo/invoice.report.fo -pdf C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_pdf/Rechnung_%s.pdf',
             		'INVOICE_NR'
             	)
            );
             
-			echo shell_exec('ls');
+			
             
             
         } catch (\RuntimeException $e) {

@@ -14,7 +14,7 @@
 		<fo:block-container position="absolute" right="0.5cm" top="0.2cm" text-align="right">
 			<fo:block>
 				<fo:inline>
-					<fo:external-graphic src="/etc/coffeeshop/fop-2.0/klara.jpg" content-width="6cm"/>
+					<fo:external-graphic src="klara.jpg" content-width="6cm"/>
 				</fo:inline>
 			</fo:block>
 		</fo:block-container>
