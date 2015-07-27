@@ -19,7 +19,6 @@ class TemplateEngine
     public function __construct($templatePath, $templateOutputPath)
     {
         self::ensureFileExists($templatePath);
-        self::createFileifnotexist($templateOutputPath);
 
         $this->filePath = $templatePath;
         $this->templateOutputPath = $templateOutputPath;
@@ -35,22 +34,7 @@ class TemplateEngine
         }
     }
     
-    /**
-     * @param $filePath
-     */
-    
-    private function createFileifnotexist($filePath)
-    {
-    	if (!file_exists($filePath))
-    	{
-    		$filePath = fopen($filePath, "w");
-        }
-        else 
-        {
-        	throw new \InvalidArgumentException(sprintf('Given file already exists. Pls check the given path (%s)', $filePath));
-        }
-    }
-    
+   
     public function render(array $parameters)
     {
         // read template file from path
@@ -59,17 +43,34 @@ class TemplateEngine
         try {
             foreach($parameters as $parameter => $value) {
                 // replace given parameter with given value
-                $templateFileContent = str_replace('$parameter', '$value', $templateFileContent);
+                $templateFileContent = str_replace($parameter, $value, $templateFileContent);
             }
 
             // write into new file for PDF Output
             file_put_contents($this->templateOutputPath, $templateFileContent);
 
-            // Shell Command for generating the invoice with FOP 
-			$INVOICE_NR='%RECHNUNGS_ID%';
             
-            echo shell_exec('java -jar ../../fop-2.0/build/fop.jar -fo escapeshellarg($this->templateOutputPath) -pdf ../../fop-2.0/invoice_pdf/Rechnung_'.escapeshellarg($INVOICE_NR).'.pdf');
-
+			
+			self::ensureFileExists($this->templateOutputPath);
+			
+			#../../../../fop-2.0/invoice_fo/invoice.report.fo
+            
+			$this->templateOutputPath = substr($this->templateOutputPath, 6);
+			
+			echo $this->templateOutputPath;
+			
+			// Shell Command for generating the invoice with FOP 
+			echo shell_exec(
+            	sprintf(
+            		'java -jar ../../fop-2.0/build/fop.jar -fo %s -pdf ../../fop-2.0/invoice_pdf/Rechnung_%s.pdf',
+            		$this->templateOutputPath,
+            		'INVOICE_NR'
+            	)
+           );
+            
+			echo shell_exec('ls');
+            
+            
         } catch (\RuntimeException $e) {
             MailTransmitter::sendEmail(
                 new Mail(
