@@ -59,7 +59,7 @@ class TemplateEngine
 			#echo $this->templateOutputPath.'<br>'; 
 
 			#C:\xampp\htdocs\CoffeeShop\fop-2.0
-			echo `java -jar 'C:/xampp/htdocs/CoffeeShop/fop-2.0/build/fop.jar -fo C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_fo/invoice.report.fo -pdf C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_pdf/Rechnung_s.pdf' 2>&1`;
+			echo shell_exec('java -jar C:/xampp/htdocs/CoffeeShop/fop-2.0/build/fop.jar -fo C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_fo/invoice.report.fo -pdf C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_pdf/Rechnung_s.pdf 2>&1');
 			
 			// Shell Command for generating the invoice with FOP 
 			echo shell_exec(
