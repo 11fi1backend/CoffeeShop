@@ -1,6 +1,6 @@
 <?php
 
-class insertUserMySQLQuery extends \lib\DatabaseQuery
+class insertUserMySQLQuery extends DatabaseQuery
 {
     /**
      * @var string

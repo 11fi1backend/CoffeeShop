@@ -1,15 +1,12 @@
 <?php
 
-require_once '../../../lib/Autoloader.php';
+require_once('../../../lib/Autoloader.php');
+spl_autoload_register('my_autoloader');
 
-spl_autoload_register(array('fantasyAutoloader', 'load'));
+$te = new TemplateEngine('../../../template/invoice.report.fo', '../../../../fop-2.0/invoice_fo/invoice.report.fo');
+print_r($te);
 
-
-#$te = new TemplateEngine('/etc/coffeeshop/invoice/invoice.report.fo', '/etc/coffeeshop/invoice/fo/invoice.report.fo');
-$te = new TemplateEngine('../../fop-2.0/examples/fo/basic/border.fo', '../../fop-2.0/invoice_fo/border.fo');
-
-
-/*$te->render(
+$te->render(
     array(
         '%Lehrername%' 		=> 'LEHRER',
         '%Konsumenten_ID' 	=> 'KDNR',
@@ -21,4 +18,4 @@ $te = new TemplateEngine('../../fop-2.0/examples/fo/basic/border.fo', '../../fop
         '%Menge%' 			=> 'MENGE',
         '%Rechnungspreis%' 	=> 'RECHPREIS'
     )
-);*/
+);

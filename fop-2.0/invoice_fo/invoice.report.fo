@@ -1,0 +1,158 @@
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+	<fo:layout-master-set>
+		<fo:simple-page-master master-name="first" page-height="29.7cm" page-width="21cm" margin-top="0cm" margin-bottom="0cm" margin-left="0cm"
+			margin-right="0cm">
+			<fo:region-body margin-top="0cm"/>
+			<fo:region-before extent="0cm"/>
+			<fo:region-after extent="0cm"/>
+		</fo:simple-page-master>
+	</fo:layout-master-set>
+	<!-- starts actual layout -->
+	<fo:page-sequence master-reference="first">
+		<fo:flow flow-name="xsl-region-body">
+		<!-- Grafik -->
+		<fo:block-container position="absolute" right="0.5cm" top="0.2cm" text-align="right">
+			<fo:block>
+				<fo:inline>
+					<fo:external-graphic src="/etc/coffeeshop/fop-2.0/klara.jpg" content-width="6cm"/>
+				</fo:inline>
+			</fo:block>
+		</fo:block-container>
+		<!-- Anschrift -->
+			<fo:block-container position="absolute" left="1.9cm" top="4cm" height="1cm" width="15cm">
+				<fo:block color="#70706f"> Klara-Oppenheimer-Schule &#8226; Stettiner Straße 1 &#8226; 97072 W&#252;rzburg </fo:block>
+			</fo:block-container>
+			<!-- ende anschrift -->
+			<fo:block-container position="absolute" left="1.9cm" width="6cm" top="5.5cm" height="3.5cm" font-size="10pt">
+				<fo:block>%Lehrername%</fo:block>
+			</fo:block-container>
+			<!-- ende empfadresse -->
+			<!-- info block -->
+			<fo:block-container position="absolute" left="11.4cm" width="7cm" top="6.9cm" height="4.5cm" font-size="10pt">
+				<fo:table table-layout="fixed" width="100%">
+					<fo:table-column column-width="45%"/>
+					<fo:table-column column-width="55%"/>
+					<fo:table-body>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block> Konsumenten_ID: </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block font-weight="bold"> %Konsumenten_ID% </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block> Rechnungs_ID: </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block font-weight="bold"> %Rechnungs_ID% </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block> Auftrags_ID: </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block font-weight="bold"> %Auftrags_ID% </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block> Auftragsdatum: </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block font-weight="bold"> %Auftragsdatum% </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+					</fo:table-body>
+				</fo:table>
+			</fo:block-container>
+			<!-- /info block -->
+			<!-- pos block -->
+			<fo:block-container position="absolute" left="1.9cm" width="17.8cm" top="10cm" height="14cm" border-width="thin">
+				<fo:table table-layout="fixed" width="100%">
+					<fo:table-column column-width="25%"/>
+					<fo:table-column column-width="25%"/>
+					<fo:table-column column-width="25%"/>
+					<fo:table-column column-width="25%"/>
+					<fo:table-header>
+						<fo:table-row background-color="#DDDDDD" font-weight="bold" border-style="solid" border-width="thin" font-size="12">
+							<fo:table-cell>
+								<fo:block text-align="left"> Artikelnr. </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block text-align="left"> Bezeichnung </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block text-align="left"> Menge </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block text-align="left"> Rechnungspreis </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+					</fo:table-header>
+					<fo:table-body>
+						<fo:table-row>
+							<fo:table-cell number-columns-spanned="4">
+								<fo:block text-align="center"> &#160; </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block text-align="left"> %Artikelnr% </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block text-align="left"> %Bezeichnung% </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block text-align="left"> %Menge% </fo:block>
+							</fo:table-cell>
+							<fo:table-cell>
+								<fo:block text-align="left"> %Rechnungspreis% </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+					</fo:table-body>
+				</fo:table>
+			</fo:block-container>
+
+			<!-- foot -->
+			<fo:block-container position="absolute" left="1.9cm" width="17.8cm" top="23cm" height="2.0cm" font-size="10pt" text-align="right"
+				border-top-style="solid" border-width="thin">
+				<fo:table table-layout="fixed" width="100%">
+					<fo:table-column column-width="100%"/>
+					<fo:table-body>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block font-weight="bold" text-align="left"> Ansprechpartner </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block text-align="left"> Karl Steinam </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block text-align="left"> Stettiner Straße 1 </fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block text-align="left"> 97072 Würzburg</fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+						<fo:table-row>
+							<fo:table-cell>
+								<fo:block text-align="left" color="blue">
+									steinam@klara-oppenheimer-schule.de
+								</fo:block>
+							</fo:table-cell>
+						</fo:table-row>
+					</fo:table-body>
+				</fo:table>
+			</fo:block-container>
+			<!-- ende foot -->
+		</fo:flow>
+	</fo:page-sequence>
+</fo:root>

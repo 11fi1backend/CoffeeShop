@@ -1,6 +1,6 @@
 <?php
 
-class deleteUserMySQLQuery extends \lib\DatabaseQuery
+class deleteUserMySQLQuery extends DatabaseQuery
 {
     /**
      * @var string

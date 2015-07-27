@@ -1,7 +1,5 @@
 <?php
 
-namespace lib;
-
 class TemplateEngine
 {
     /**
@@ -21,7 +19,7 @@ class TemplateEngine
     public function __construct($templatePath, $templateOutputPath)
     {
         self::ensureFileExists($templatePath);
-        self::ensureFileExists($templateOutputPath);
+        self::createFileifnotexist($templateOutputPath);
 
         $this->filePath = $templatePath;
         $this->templateOutputPath = $templateOutputPath;
@@ -36,7 +34,23 @@ class TemplateEngine
             throw new \InvalidArgumentException(sprintf('Given file could not be found. Pls check the given path (%s)', $filePath));
         }
     }
-
+    
+    /**
+     * @param $filePath
+     */
+    
+    private function createFileifnotexist($filePath)
+    {
+    	if (!file_exists($filePath))
+    	{
+    		$filePath = fopen($filePath, "w");
+        }
+        else 
+        {
+        	throw new \InvalidArgumentException(sprintf('Given file already exists. Pls check the given path (%s)', $filePath));
+        }
+    }
+    
     public function render(array $parameters)
     {
         // read template file from path
@@ -45,16 +59,16 @@ class TemplateEngine
         try {
             foreach($parameters as $parameter => $value) {
                 // replace given parameter with given value
-                $templateFileContent = str_replace("$parameter", "$value", $templateFileContent);
+                $templateFileContent = str_replace('$parameter', '$value', $templateFileContent);
             }
 
             // write into new file for PDF Output
             file_put_contents($this->templateOutputPath, $templateFileContent);
 
             // Shell Command for generating the invoice with FOP 
-			$INVOICE_NR="%RECHNUNGS_ID%";
+			$INVOICE_NR='%RECHNUNGS_ID%';
             
-            echo shell_exec('java -jar ../../fop-2.0/build/fop.jar -fo escapeshellarg($this->templateOutputPath) -pdf ../../fop-2.0/invoice_pdf/Rechnung_'.escapeshellarg($INVOICE_NR).".pdf");
+            echo shell_exec('java -jar ../../fop-2.0/build/fop.jar -fo escapeshellarg($this->templateOutputPath) -pdf ../../fop-2.0/invoice_pdf/Rechnung_'.escapeshellarg($INVOICE_NR).'.pdf');
 
         } catch (\RuntimeException $e) {
             MailTransmitter::sendEmail(

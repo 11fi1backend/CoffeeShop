@@ -1,7 +1,5 @@
 <?php
 
-namespace lib;
-
 abstract class MailTransmitter
 {
     /**
