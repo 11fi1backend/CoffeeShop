@@ -50,28 +50,21 @@ class TemplateEngine
             // write into new file for PDF Output
             file_put_contents($this->templateOutputPath, $templateFileContent);
 
-            
-			
 			self::ensureFileExists($this->templateOutputPath);
 			
 			$this->templateOutputPath = substr($this->templateOutputPath, 6);
 			
-			#echo $this->templateOutputPath.'<br>'; 
-
-			#C:\xampp\htdocs\CoffeeShop\fop-2.0
-			echo shell_exec('java -jar C:/xampp/htdocs/CoffeeShop/fop-2.0/build/fop.jar -fo C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_fo/invoice.report.fo -pdf C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_pdf/Rechnung_s.pdf 2>&1');
+			// Shell Command for generating the invoice with FOP
+			// Execute Windows Batchfile 
+			#system('cmd /c C:\xampp\htdocs\CoffeeShop\src\lib\fop.bat 2>&1');
 			
-			// Shell Command for generating the invoice with FOP 
-			echo shell_exec(
-            	sprintf(
-            		'java -jar C:/xampp/htdocs/CoffeeShop/fop-2.0/build/fop.jar -fo C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_fo/invoice.report.fo -pdf C:/xampp/htdocs/CoffeeShop/fop-2.0/invoice_pdf/Rechnung_%s.pdf',
-            		'INVOICE_NR'
-            	)
-           );
-            
+			// Execute Linux Shellscript
+			$PDF = 'Rechnung_RECHNR.pdf';
+			echo $this->templateOutputPath;
+			echo $PDF;
+			$output = shell_exec(`./etc/coffeeshop/src/lib/fop.sh $this->templateOutputPath $PDF 2>&1`);
+			echo $output;
 			
-            
-            
         } catch (\RuntimeException $e) {
             MailTransmitter::sendEmail(
                 new Mail(
