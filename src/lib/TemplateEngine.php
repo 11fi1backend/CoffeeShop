@@ -34,8 +34,11 @@ class TemplateEngine
             #'
         }
     }
-    
-   
+
+    /**
+     * @param array $parameters
+     * @return bool
+     */
     public function render(array $parameters)
     {
         // read template file from path
@@ -62,14 +65,19 @@ class TemplateEngine
 			$PDF = 'Rechnung_RECHNR.pdf';
 			echo $this->templateOutputPath;
 			echo $PDF;
-			$output = shell_exec(`./etc/coffeeshop/src/lib/fop.sh $this->templateOutputPath $PDF 2>&1`);
+			$output = shell_exec(sprintf('./etc/coffeeshop/src/lib/fop.sh %s $PDF 2>&1', $this->templateOutputPath));
 			echo $output;
-			
+
+            return true;
         } catch (\RuntimeException $e) {
+
+            $cfg = Factory::getFactory()->getConfig();
+            $adminEmailAddress = $cfg->getAdminEmailAddress();
+
             MailTransmitter::sendEmail(
                 new Mail(
-                    'coffeeshop.backend@klara-oppenheimer-schule.de',
-                    'admin@klara-oppenheimer-schule.de',
+                    $adminEmailAddress,
+                    $adminEmailAddress,
                     'Coffeeshop - Error in Backend',
                     sprintf(
                         'Could not create template (%s). \n Please check Exception: %s',
@@ -78,6 +86,8 @@ class TemplateEngine
                     )
                 )
             );
+
+            return false;
         }
     }
 }

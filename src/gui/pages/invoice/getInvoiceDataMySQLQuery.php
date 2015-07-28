@@ -2,13 +2,8 @@
 
 class insertUserMySQLQuery extends DatabaseQuery
 {
-
-
-    public function __construct($name, $copyCode, $locked)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->lastName = $copyCode;
-        $this->copyCode = $locked;
     }
 
     /**

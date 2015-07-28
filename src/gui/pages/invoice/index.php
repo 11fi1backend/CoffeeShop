@@ -1,10 +1,10 @@
 <?php
 
 require_once('../../../lib/Autoloader.php');
-spl_autoload_register('my_autoloader');
+spl_autoload_register('autoload');
 
 $te = new TemplateEngine('../../../template/invoice.report.fo', '../../../../fop-2.0/invoice_fo/invoice.report.fo');
-$te -> render(
+$te->render(
     array(
         '%Lehrername%' 		=> 'LEHRER',
         '%Konsumenten_ID' 	=> 'KDNR',

@@ -55,4 +55,12 @@ class Config
     {
         return $this->file['password'];
     }
+
+    /**
+     * @return EmailAddress
+     */
+    public function getAdminEmailAddress()
+    {
+        return new EmailAddress($this->file['adminEmailAddress']);
+    }
 }

@@ -45,4 +45,20 @@ class DataBaseConnection
             return false;
         }
     }
+
+    /**
+     * @param DatabaseQuery $query
+     * @return bool
+     */
+    public function execute(DatabaseQuery $query)
+    {
+        try {
+            $this->connection->beginTransaction();
+            $this->connection->exec((string) $query);
+            return $this->connection->commit();
+        } catch (\PDOException $e) {
+            $this->connection->rollBack();
+            return false;
+        }
+    }
 }

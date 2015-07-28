@@ -39,7 +39,7 @@ class Factory
     /**
      * @return Config
      */
-    private function getConfig()
+    public function getConfig()
     {
         if ($this->config == null) {
             $this->config = new Config("../config.ini");
