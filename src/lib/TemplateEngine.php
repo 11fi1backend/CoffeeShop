@@ -51,18 +51,18 @@ class TemplateEngine
             file_put_contents($this->templateOutputPath, $templateFileContent);
 
 			self::ensureFileExists($this->templateOutputPath);
-			
+
 			$this->templateOutputPath = substr($this->templateOutputPath, 6);
 			
 			// Shell Command for generating the invoice with FOP
 			// Execute Windows Batchfile 
-			#system('cmd /c C:\xampp\htdocs\CoffeeShop\src\lib\fop.bat 2>&1');
+			#system('cmd /c C:\xampp\htdocs\CoffeeShop\src\template\fop.bat 2>&1');
 			
 			// Execute Linux Shellscript
 			$PDF = 'Rechnung_RECHNR.pdf';
 			echo $this->templateOutputPath;
 			echo $PDF;
-			$output = shell_exec(`./etc/coffeeshop/src/lib/fop.sh $this->templateOutputPath $PDF 2>&1`);
+			$output = shell_exec(`./etc/coffeeshop/src/template/fop.sh $this->templateOutputPath $PDF 2>&1`);
 			echo $output;
 			
         } catch (\RuntimeException $e) {
