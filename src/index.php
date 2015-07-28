@@ -3,12 +3,8 @@
 require_once('lib/Autoloader.php');
 spl_autoload_register('my_autoloader');
 
-#$db = Factory::getFactory()->getConnection();
+$db = Factory::getFactory()->getConnection();
 
-
-print_r(parse_ini_file("config.ini"));
-
-exit;
 $db->query(new insertUserMySQLQuery());
 
 $te = new TemplateEngine('/etc/coffeeshop/invoice/invoice.report.fo', '/etc/coffeeshop/invoice/fo/invoice.report.fo');
