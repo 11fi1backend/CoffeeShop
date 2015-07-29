@@ -62,13 +62,7 @@ class TemplateEngine
 			#system('cmd /c C:\xampp\htdocs\CoffeeShop\src\template\fop.bat 2>&1');
 			
 			// Execute Linux Shellscript
-			$PDF = 'Rechnung_RECHNR.pdf';
-			echo $this->templateOutputPath;
-			echo $PDF;
-			
-			$output = shell_exec(sprintf('./etc/coffeeshop/src/lib/fop.sh %s $PDF 2>&1', $this->templateOutputPath));
-
-			echo $output;
+			shell_exec(sprintf('./etc/coffeeshop/src/lib/fop.sh %s $PDF 2>&1', $this->templateOutputPath));
 
             return true;
         } catch (\RuntimeException $e) {
