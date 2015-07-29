@@ -27,9 +27,9 @@ class Config
     /**
      * @return string
      */
-    public function getDbHostName()
+    public function getDbHostIP()
     {
-        return $this->file['hostName'];
+        return $this->file['hostIP'];
     }
 
     /**

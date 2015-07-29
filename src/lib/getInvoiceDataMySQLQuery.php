@@ -1,6 +1,6 @@
 <?php
 
-class insertUserMySQLQuery extends DatabaseQuery
+class getInvoiceDataMySQLQuery extends DatabaseQuery
 {
     public function __construct()
     {
@@ -20,7 +20,7 @@ class insertUserMySQLQuery extends DatabaseQuery
             FROM orders o
             INNER JOIN customer c ON o.Cust_ID = c.ID
             GROUP BY c.ID
-            HAVING(SUM(o.Quantity)'
+            HAVING(SUM(o.Quantity))'
         );
     }
 }

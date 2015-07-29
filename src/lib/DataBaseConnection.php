@@ -32,16 +32,15 @@ class DataBaseConnection
 
     /**
      * @param DatabaseQuery $query
-     * @return bool
+     * @return PDOStatement
      */
     public function query(DatabaseQuery $query)
     {
         try {
-            $this->connection->beginTransaction();
-            $this->connection->query((string) $query);
-            return $this->connection->commit();
+            $statement = $this->connection->prepare((string) $query);
+            $statement->execute();
+            return $statement;
         } catch (\PDOException $e) {
-            $this->connection->rollBack();
             return false;
         }
     }
