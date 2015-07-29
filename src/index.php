@@ -9,7 +9,7 @@ $DB = Factory::getFactory()->getConnection();
 
 $result = $DB->query((new getInvoiceDataMySQLQuery()));
 
-print_r($result);
+print_r($result->fetchAll());
 
 $te->render(
     array(

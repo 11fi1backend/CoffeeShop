@@ -42,7 +42,7 @@ class Factory
     public function getConfig()
     {
         if ($this->config == null) {
-            $this->config = new Config("../config.ini");
+            $this->config = new Config("./config.ini");
         }
 
         return $this->config;
@@ -55,13 +55,13 @@ class Factory
     {
         if ($this->databaseConnection == null) {
 
-            #$config = self::getConfig();
+            $config = self::getConfig();
 
             $this->databaseConnection = new DataBaseConnection(
-                '10.161.10.36',
-                'coffeeshop',
-                'root',
-                ''
+                $config->getDbHostIP(),
+                $config->getDbName(),
+                $config->getDbUsername(),
+                $config->getDbPassword()
             );
         }
 
