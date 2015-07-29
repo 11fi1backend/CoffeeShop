@@ -59,10 +59,10 @@ class TemplateEngine
 			
 			// Shell Command for generating the invoice with FOP
 			// Execute Windows Batchfile 
-			#system('cmd /c C:\xampp\htdocs\CoffeeShop\src\template\fop.bat 2>&1');
+			system('cmd /c C:\xampp2\htdocs\CoffeeShop\src\template\fop.bat 2>&1');
 			
 			// Execute Linux Shellscript
-			shell_exec(sprintf('./etc/coffeeshop/src/lib/fop.sh %s $PDF 2>&1', $this->templateOutputPath));
+			#shell_exec(sprintf('./etc/coffeeshop/src/lib/fop.sh %s $PDF 2>&1', $this->templateOutputPath));
 
             return true;
         } catch (\RuntimeException $e) {

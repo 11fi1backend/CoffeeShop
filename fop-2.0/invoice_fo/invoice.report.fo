@@ -24,7 +24,7 @@
 			</fo:block-container>
 			<!-- ende anschrift -->
 			<fo:block-container position="absolute" left="1.9cm" width="6cm" top="5.5cm" height="3.5cm" font-size="10pt">
-				<fo:block>LEHRER</fo:block>
+				<fo:block>Karl Steinam</fo:block>
 			</fo:block-container>
 			<!-- ende empfadresse -->
 			<!-- info block -->
@@ -38,7 +38,7 @@
 								<fo:block> Konsumenten_ID: </fo:block>
 							</fo:table-cell>
 							<fo:table-cell>
-								<fo:block font-weight="bold"> KDNR% </fo:block>
+								<fo:block font-weight="bold"> 12345 </fo:block>
 							</fo:table-cell>
 						</fo:table-row>
 						<fo:table-row>
@@ -46,7 +46,7 @@
 								<fo:block> Rechnungs_ID: </fo:block>
 							</fo:table-cell>
 							<fo:table-cell>
-								<fo:block font-weight="bold"> RECHNR </fo:block>
+								<fo:block font-weight="bold"> 25 </fo:block>
 							</fo:table-cell>
 						</fo:table-row>
 						<fo:table-row>
@@ -54,7 +54,7 @@
 								<fo:block> Auftrags_ID: </fo:block>
 							</fo:table-cell>
 							<fo:table-cell>
-								<fo:block font-weight="bold"> AUFNR </fo:block>
+								<fo:block font-weight="bold"> 25 </fo:block>
 							</fo:table-cell>
 						</fo:table-row>
 						<fo:table-row>
@@ -62,7 +62,7 @@
 								<fo:block> Auftragsdatum: </fo:block>
 							</fo:table-cell>
 							<fo:table-cell>
-								<fo:block font-weight="bold"> AUFDAT </fo:block>
+								<fo:block font-weight="bold"> 29.07.15 </fo:block>
 							</fo:table-cell>
 						</fo:table-row>
 					</fo:table-body>
@@ -100,16 +100,16 @@
 						</fo:table-row>
 						<fo:table-row>
 							<fo:table-cell>
-								<fo:block text-align="left"> ARTNR </fo:block>
+								<fo:block text-align="left"> 1 </fo:block>
 							</fo:table-cell>
 							<fo:table-cell>
-								<fo:block text-align="left"> BEZEICHNUNG </fo:block>
+								<fo:block text-align="left"> Kaffee </fo:block>
 							</fo:table-cell>
 							<fo:table-cell>
-								<fo:block text-align="left"> MENGE </fo:block>
+								<fo:block text-align="left"> 15 </fo:block>
 							</fo:table-cell>
 							<fo:table-cell>
-								<fo:block text-align="left"> RECHPREIS </fo:block>
+								<fo:block text-align="left"> 250.00 </fo:block>
 							</fo:table-cell>
 						</fo:table-row>
 					</fo:table-body>

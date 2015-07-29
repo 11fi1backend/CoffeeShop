@@ -16,7 +16,7 @@ class DataBaseConnection
     public function __construct($host, $dbName, $username, $password)
     {
         try {
-            $this->connection = new \PDO(
+            $this->connection = new PDO(
                 sprintf(
                     'mysql:host=%s;dbname=%s',
                     $host,
@@ -25,8 +25,8 @@ class DataBaseConnection
                 $username,
                 $password
             );
-        } catch (\PDOException $e) {
-            return false;
+        } catch (PDOException $e) {
+            $this->connection =  false;
         }
     }
 
@@ -40,7 +40,7 @@ class DataBaseConnection
             $statement = $this->connection->prepare((string) $query);
             $statement->execute();
             return $statement;
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             return false;
         }
     }
@@ -55,9 +55,17 @@ class DataBaseConnection
             $this->connection->beginTransaction();
             $this->connection->exec((string) $query);
             return $this->connection->commit();
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             $this->connection->rollBack();
             return false;
         }
+    }
+
+    /**
+     * @return resource
+     */
+    public function getConnection()
+    {
+        return $this->connection;
     }
 }
